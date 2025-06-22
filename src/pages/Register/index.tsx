@@ -1,6 +1,6 @@
 import { FormEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '@src/contexts/AuthContext';
+import { useAuth } from '@src/hooks/useAuth';
 import { toast } from 'react-toastify';
 
 export function Register() {

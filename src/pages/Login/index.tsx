@@ -1,9 +1,10 @@
 import { FormEvent, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useAuth } from '@src/contexts/AuthContext';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '@src/hooks/useAuth';
 import { toast } from 'react-toastify';
 
 export function Login() {
+  const navigate = useNavigate();
   const [username, setUser] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -14,6 +15,7 @@ export function Login() {
     try {
       setIsLoading(true);
       await signIn({ username, password });
+      navigate('/dashboard');
     } catch (error) {
       toast.error('Usuário ou senha inválidos');
     } finally {

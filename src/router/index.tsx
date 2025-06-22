@@ -3,8 +3,8 @@ import { Login } from '@src/pages/Login'
 import { Register } from '@src/pages/Register'
 import { ConfirmAccount } from '@src/pages/ConfirmAccount'
 import { AuthGuard } from '@src/components/AuthGuard'
-import { AuthLayout } from '@src/components/AuthLayout'
-import { useAuth } from '@src/contexts/AuthContext'
+import { AuthLayout } from '@src/layouts/AuthLayout'
+import { useAuth } from '@src/hooks/useAuth'
 
 function HomeRedirect() {
   const { isAuthenticated } = useAuth();
