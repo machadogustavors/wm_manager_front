@@ -1,7 +1,7 @@
 import { FormEvent, useState } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { useAuth } from '@src/contexts/AuthContext';
+import { useAuth } from '@src/hooks/useAuth';
 
 export function ConfirmAccount() {
   const navigate = useNavigate();
