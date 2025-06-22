@@ -13,6 +13,7 @@ interface AuthContextType {
   signIn: (credentials: SignInCredentials) => Promise<void>;
   signUp: (data: SignUpData) => Promise<void>;
   signOut: () => void;
+  confirmAccount: (data: { username: string; confirmation_code: string }) => Promise<void>;
 }
 
 interface SignInCredentials {
@@ -21,9 +22,11 @@ interface SignInCredentials {
 }
 
 interface SignUpData {
-  name: string;
+  username: string;
   email: string;
   password: string;
+  phone_number: string;
+  birthdate: string;
 }
 
 const AuthContext = createContext({} as AuthContextType);
@@ -45,7 +48,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   const signIn = useCallback(async ({ username, password }: SignInCredentials) => {
     try {
-      const response = await httpClient.post('/auth/login', {
+      const response = await httpClient.post('/auth/sign-in', {
         username,
         password,
       });
@@ -63,15 +66,19 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
   }, []);
 
-  const signUp = useCallback(async ({ name, email, password }: SignUpData) => {
+  const signUp = useCallback(async (data: SignUpData) => {
     try {
-      await httpClient.post('/auth/register', {
-        name,
-        email,
-        password,
-      });
+      await httpClient.post('/auth/sign-up', data);
     } catch (error) {
       throw new Error('Error creating account');
+    }
+  }, []);
+
+  const confirmAccount = useCallback(async (data: { username: string; confirmation_code: string }) => {
+    try {
+      await httpClient.post('/auth/confirm', data);
+    } catch (error) {
+      throw new Error('Erro ao confirmar conta');
     }
   }, []);
 
@@ -83,7 +90,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated, signIn, signUp, signOut }}>
+    <AuthContext.Provider value={{ user, isAuthenticated, signIn, signUp, signOut, confirmAccount }}>
       {children}
     </AuthContext.Provider>
   );
