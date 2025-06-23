@@ -13,7 +13,7 @@ export function AuthGuard({ isPrivate = true }: AuthGuardProps) {
   }
 
   if (!isPrivate && isAuthenticated) {
-    return <Navigate to="/dashboard" replace />;
+    return <Navigate to="/table" replace />;
   }
 
   return <Outlet />;

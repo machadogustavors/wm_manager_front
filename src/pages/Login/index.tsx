@@ -15,7 +15,7 @@ export function Login() {
     try {
       setIsLoading(true);
       await signIn({ username, password });
-      navigate('/dashboard');
+      navigate('/table');
     } catch (error) {
       toast.error('Usuário ou senha inválidos');
     } finally {
