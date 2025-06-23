@@ -1,5 +1,5 @@
 import { ReactNode, useCallback, useEffect, useState } from 'react';
-import { AuthContext } from './AuthContext';
+import { AuthContext } from '../contexts/AuthContext';
 import { httpClient } from '@src/services/httpClient';
 import type { User, SignInCredentials, SignUpData } from '@src/lib/types';
 
