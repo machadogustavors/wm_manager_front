@@ -20,6 +20,7 @@ export interface Service {
 export interface User {
   id: string;
   name: string;
+  access_token: string;
   email: string;
 }
 
