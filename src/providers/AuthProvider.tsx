@@ -37,19 +37,18 @@ export function AuthProvider({ children }: AuthProviderProps) {
         password,
       });
 
+      const token = response.data.tokens.AccessToken;
+
       const user = {
         id: response.data.tokens.IdToken,
         name: username,
-        email: response.data.email
+        email: response.data.email,
+        access_token: token
       }
-
-      const token = response.data.tokens.AccessToken;
 
       localStorage.setItem('@WMManager:token', token);
       localStorage.setItem('@WMManager:user', JSON.stringify(user));
       localStorage.setItem('@WMManager:loginAt', String(Date.now()));
-
-      httpClient.defaults.headers.common.Authorization = `Bearer ${token}`;
 
       setUser(user);
     } catch (error) {

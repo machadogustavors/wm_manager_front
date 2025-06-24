@@ -18,20 +18,20 @@ export interface UpdateServiceRequest extends Partial<CreateServiceRequest> {
 }
 
 export async function getServices(): Promise<Service[]> {
-    const response = await httpClient.get('/services/get');
+    const response = await httpClient.get('/services');
     return response.data;
 }
 
 export async function createService(data: CreateServiceRequest): Promise<Service> {
-    const response = await httpClient.post('/services/create', data);
+    const response = await httpClient.post('/services', data);
     return response.data;
 }
 
 export async function updateService(id: number, data: UpdateServiceRequest): Promise<Service> {
-    const response = await httpClient.put(`/services/update/${id}`, data);
+    const response = await httpClient.put(`/services/${id}`, data);
     return response.data;
 }
 
 export async function deleteService(id: number): Promise<void> {
-    await httpClient.post(`/services/delete/${id}`);
+    await httpClient.delete(`/services/${id}`);
 }
