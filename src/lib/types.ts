@@ -53,4 +53,8 @@ export interface ServiceFilter {
   date?: string; // yyyy-mm-dd
   month?: string; // yyyy-mm
   year?: string; // yyyy
+  client_name?: string;
+  car_model?: string;
+  license_plate?: string;
+  mechanic?: string;
 }
