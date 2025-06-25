@@ -12,7 +12,7 @@ export interface ServiceBase {
 }
 
 export interface Service extends ServiceBase {
-    id: number;
+    id_servico: number;
     created_at: string | null;
     total_cost: number;
     parts_store_cost: number;
