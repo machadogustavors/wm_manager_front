@@ -1,19 +1,22 @@
-// Tipo do servico padrao
-export interface Service {
+// Tipo base para criação de serviço
+export interface ServiceBase {
+    date?: string | null;
+    client_name?: string | null;
+    car_model?: string | null;
+    license_plate?: string | null;
+    parts_cost?: number | null;
+    labor_cost?: number | null;
+    mechanic?: string | null;
+    service_description?: string | null;
+    payment?: string | null;
+}
+
+export interface Service extends ServiceBase {
     id: number;
-    date: string | null;
-    client_name: string | null;
-    car_model: string | null;
-    license_plate: string | null;
-    parts_cost: number | null;
-    labor_cost: number | null;
-    mechanic: string | null;
-    service_description: string | null;
     created_at: string | null;
     total_cost: number;
     parts_store_cost: number;
     parts_store_profit: number;
-    payment: string | null;
 }
 
 // Tipos e interfaces de autenticação
@@ -44,4 +47,10 @@ export interface AuthContextType {
   signUp: (data: SignUpData) => Promise<void>;
   signOut: () => void;
   confirmAccount: (data: { username: string; confirmation_code: string }) => Promise<void>;
+}
+
+export interface ServiceFilter {
+  date?: string; // yyyy-mm-dd
+  month?: string; // yyyy-mm
+  year?: string; // yyyy
 }
