@@ -29,7 +29,6 @@ export function Table() {
   const [deleteId, setDeleteId] = useState<number | null>(null);
   const [editService, setEditService] = useState<any | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
-    console.log(services)
   async function handleDelete() {
     if (deleteId == null) return;
     setIsDeleting(true);
@@ -69,18 +68,18 @@ export function Table() {
         <tbody>
           {services.map((service) => (
             <tr key={service.id_servico} className="group border-t border-gray-100 hover:bg-primary/5 transition">
-              <td className="px-4 py-2">{service.date || '-'}</td>
-              <td className="px-4 py-2">{service.client_name || '-'}</td>
-              <td className="px-4 py-2">{service.car_model || '-'}</td>
-              <td className="px-4 py-2">{service.license_plate || '-'}</td>
-              <td className="px-4 py-2">{getLabel(mechanicOptions, service.mechanic)}</td>
-              <td className="px-4 py-2">{service.service_description || '-'}</td>
-              <td className="px-4 py-2">{service.parts_cost != null ? `R$ ${service.parts_cost}` : '-'}</td>
-              <td className="px-4 py-2">{service.labor_cost != null ? `R$ ${service.labor_cost}` : '-'}</td>
-              <td className="px-4 py-2">{service.total_cost != null ? `R$ ${service.total_cost}` : '-'}</td>
-              <td className="px-4 py-2">{service.parts_store_cost != null ? `R$ ${service.parts_store_cost}` : '-'}</td>
-              <td className="px-4 py-2">{service.parts_store_profit != null ? `R$ ${service.parts_store_profit}` : '-'}</td>
-              <td className="px-4 py-2">{getLabel(paymentOptions, service.payment)}</td>
+              <td className="px-4 py-2 whitespace-nowrap max-w-[180px] overflow-x-auto">{service.date || '-'}</td>
+              <td className="px-4 py-2 whitespace-nowrap max-w-[180px] overflow-x-auto">{service.client_name || '-'}</td>
+              <td className="px-4 py-2 whitespace-nowrap max-w-[180px] overflow-x-auto">{service.car_model || '-'}</td>
+              <td className="px-4 py-2 whitespace-nowrap max-w-[180px] overflow-x-auto">{service.license_plate || '-'}</td>
+              <td className="px-4 py-2 whitespace-nowrap max-w-[180px] overflow-x-auto">{getLabel(mechanicOptions, service.mechanic)}</td>
+              <td className="px-4 py-2 whitespace-nowrap max-w-[180px] overflow-x-auto">{service.service_description || '-'}</td>
+              <td className="px-4 py-2 whitespace-nowrap max-w-[180px] overflow-x-auto">{service.parts_cost != null ? `R$ ${service.parts_cost}` : '-'}</td>
+              <td className="px-4 py-2 whitespace-nowrap max-w-[180px] overflow-x-auto">{service.labor_cost != null ? `R$ ${service.labor_cost}` : '-'}</td>
+              <td className="px-4 py-2 whitespace-nowrap max-w-[180px] overflow-x-auto">{service.total_cost != null ? `R$ ${service.total_cost}` : '-'}</td>
+              <td className="px-4 py-2 whitespace-nowrap max-w-[180px] overflow-x-auto">{service.parts_store_cost != null ? `R$ ${service.parts_store_cost}` : '-'}</td>
+              <td className="px-4 py-2 whitespace-nowrap max-w-[180px] overflow-x-auto">{service.parts_store_profit != null ? `R$ ${service.parts_store_profit}` : '-'}</td>
+              <td className="px-4 py-2 whitespace-nowrap max-w-[180px] overflow-x-auto">{getLabel(paymentOptions, service.payment)}</td>
               <td className="px-4 py-2 text-center">
                 <div className="flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                   <button title="Editar" className="text-primary hover:text-primary-dark p-1 rounded" onClick={() => setEditService(service)}>
