@@ -1,11 +1,5 @@
 import { createContext } from 'react';
-import type { Service } from '@src/lib/types';
-
-export interface ServiceFilter {
-  date?: string; // yyyy-mm-dd
-  month?: string; // yyyy-mm
-  year?: string; // yyyy
-}
+import type { Service, ServiceFilter } from '@src/lib/types';
 
 interface DataContextType {
   services: Service[];

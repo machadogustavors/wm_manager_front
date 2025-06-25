@@ -12,7 +12,6 @@ const TablePage: React.FC = () => {
         queryFn: getServices,
     });
     const [showNewService, setShowNewService] = useState(false);
-    // Filtro de data pode ser implementado depois
 
     if(isLoading) return <Loader />;
 
