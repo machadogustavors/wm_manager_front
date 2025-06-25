@@ -2,6 +2,21 @@ import React, { useState } from 'react';
 import { createService } from '@src/services/servicesData';
 import { ServiceBase } from '@src/lib/types';
 
+const paymentOptions = [
+    { value: 'none', label: 'Nenhum' },
+    { value: 'credit_card', label: 'Cartão de Crédito' },
+    { value: 'debit_card', label: 'Cartão de Débito' },
+    { value: 'cash', label: 'Dinheiro' },
+    { value: 'pix', label: 'PIX' },
+];
+
+const mechanicOptions = [
+    { value: 'none', label: 'Nenhum' },
+    { value: 'wilson_machado', label: 'Wilson Machado' },
+    { value: 'cleomar_almeida', label: 'Cleomar Almeida' },
+    { value: 'daniel_hentz', label: 'Daniel Hentz' },
+];
+
 interface NewServiceProps {
   onSuccess?: () => void;
   onCancel?: () => void;
@@ -12,7 +27,7 @@ export function NewService({ onSuccess, onCancel }: NewServiceProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   }
@@ -34,7 +49,7 @@ export function NewService({ onSuccess, onCancel }: NewServiceProps) {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50">
       <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-8 shadow-xl w-full max-w-lg space-y-4">
-        <h2 className="text-2xl font-bold text-indigo-700 mb-4">Novo Serviço</h2>
+        <h2 className="text-2xl font-bold" style={{ color: '#0092c4' }}>Novo Serviço</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Data</label>
@@ -62,21 +77,39 @@ export function NewService({ onSuccess, onCancel }: NewServiceProps) {
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Mecânico</label>
-            <input type="text" name="mechanic" value={form.mechanic || ''} onChange={handleChange} className="w-full border rounded-lg px-3 py-2" />
+            <select
+              name="mechanic"
+              value={form.mechanic || 'none'}
+              onChange={handleChange}
+              className="w-full border rounded-lg px-3 py-2"
+            >
+              {mechanicOptions.map(opt => (
+                <option key={opt.value} value={opt.value}>{opt.label}</option>
+              ))}
+            </select>
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Forma de Pagamento</label>
-            <input type="text" name="payment" value={form.payment || ''} onChange={handleChange} className="w-full border rounded-lg px-3 py-2" />
+            <select
+              name="payment"
+              value={form.payment || 'none'}
+              onChange={handleChange}
+              className="w-full border rounded-lg px-3 py-2"
+            >
+              {paymentOptions.map(opt => (
+                <option key={opt.value} value={opt.value}>{opt.label}</option>
+              ))}
+            </select>
           </div>
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Descrição do Serviço</label>
+          <label className="block text-sm font-medium mb-1">Descrição do Serviço</label>
           <textarea name="service_description" value={form.service_description || ''} onChange={handleChange} className="w-full border rounded-lg px-3 py-2" />
         </div>
         {error && <div className="text-red-600 text-sm">{error}</div>}
         <div className="flex justify-end gap-2 mt-4">
           <button type="button" onClick={onCancel} className="px-4 py-2 rounded-lg bg-gray-200 text-gray-700 font-semibold">Cancelar</button>
-          <button type="submit" disabled={isLoading} className="px-6 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-bold shadow-md transition disabled:opacity-50">
+          <button type="submit" disabled={isLoading} className="px-6 py-2 rounded-lg font-bold shadow-md transition disabled:opacity-50" style={{ backgroundColor: '#0092c4', color: 'white' }}>
             {isLoading ? 'Salvando...' : 'Salvar'}
           </button>
         </div>

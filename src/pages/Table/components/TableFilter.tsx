@@ -25,7 +25,7 @@ export function TableFilter({ onNewService }: TableFilterProps) {
   }
 
   let inputProps: any = {
-    className: "border border-gray-300 rounded-lg px-4 py-2 text-base focus:outline-none focus:ring-2 focus:ring-indigo-400",
+    className: "border border-gray-300 rounded-lg px-4 py-2 text-base focus:outline-none focus:ring-2 focus:ring-primary",
     onChange: handleDateChange,
     value: filter.date || filter.month || filter.year || '',
   };
@@ -43,7 +43,7 @@ export function TableFilter({ onNewService }: TableFilterProps) {
       <select
         value={dateType}
         onChange={handleDateTypeChange}
-        className="border border-gray-300 rounded-lg px-4 py-2 text-base focus:outline-none focus:ring-2 focus:ring-indigo-400"
+        className="border border-gray-300 rounded-lg px-4 py-2 text-base focus:outline-none focus:ring-2 focus:ring-primary"
       >
         <option value="date">Dia</option>
         <option value="month">Mês</option>
@@ -51,8 +51,9 @@ export function TableFilter({ onNewService }: TableFilterProps) {
       </select>
       <input {...inputProps} />
       <button
+        type="button"
         onClick={onNewService}
-        className="ml-auto px-6 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-base shadow-md transition"
+        className="ml-auto px-6 py-2 rounded-lg bg-primary hover:bg-cyan-700 text-white font-bold text-base shadow-md transition"
       >
         Novo Serviço
       </button>
