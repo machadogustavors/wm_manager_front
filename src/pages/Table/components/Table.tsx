@@ -10,7 +10,7 @@ export function Table() {
   return (
     <div className="overflow-x-auto w-full mx-auto">
       <table className="min-w-full bg-white rounded-xl shadow border border-gray-200">
-        <thead className="bg-indigo-100">
+        <thead className="bg-primary/50">
           <tr>
             <th className="px-4 py-2 text-left">Data</th>
             <th className="px-4 py-2 text-left">Cliente</th>
@@ -28,7 +28,7 @@ export function Table() {
         </thead>
         <tbody>
           {services.map((service) => (
-            <tr key={service.id} className="border-t border-gray-100 hover:bg-indigo-50 transition">
+            <tr key={service.id} className="border-t border-gray-100 hover:bg-primary/5 transition">
               <td className="px-4 py-2">{service.date || '-'}</td>
               <td className="px-4 py-2">{service.client_name || '-'}</td>
               <td className="px-4 py-2">{service.car_model || '-'}</td>

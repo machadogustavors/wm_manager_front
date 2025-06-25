@@ -214,6 +214,9 @@ export default {
           800: '#E8590C',
           900: '#D9480F',
         },
+        primary: {
+          DEFAULT: '#0092c4',
+        },
       }
   	}
   },
