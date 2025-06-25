@@ -39,7 +39,7 @@ export function TableFilter({ onNewService }: TableFilterProps) {
   }
 
   return (
-    <div className="w-full flex flex-col md:flex-row items-center gap-4 bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-500 p-4 mb-6">
+    <div className="w-full flex flex-col md:flex-row items-center gap-4 bg-white rounded-3xl shadow-lg overflow-hidden border border-gray-500 p-4 mb-6">
       <select
         value={dateType}
         onChange={handleDateTypeChange}
