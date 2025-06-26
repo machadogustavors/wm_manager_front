@@ -20,7 +20,6 @@ export function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<MainLayout />}>
           <Route path="/" element={<HomeRedirect />} />
           {/* Public routes */}
           <Route element={<AuthGuard isPrivate={false} />}>
@@ -30,6 +29,8 @@ export function Router() {
           </Route>
 
           {/* Protected routes */}
+        
+        <Route element={<MainLayout />}>
           <Route element={<AuthGuard />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/table" element={<Table />} />
